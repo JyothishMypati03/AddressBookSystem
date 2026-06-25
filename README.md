@@ -71,9 +71,5 @@ email='jyothish@gmail.com'
 }
 ```
 
-## Future Enhancements
 
-- UC2 - Add Contact using Console Input
-- UC3 - Edit Existing Contact
-- UC4 - Delete Contact
 
