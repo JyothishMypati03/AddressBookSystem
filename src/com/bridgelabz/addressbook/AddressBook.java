@@ -58,7 +58,25 @@ public class AddressBook {
                 System.out.println("Enter New Email : ");
                 contact.setEmail(scanner.nextLine());
 
-                System.out.println("\nContact Updated Successfully.");
+                System.out.println("Contact Updated Successfully.");
+
+                return;
+            }
+        }
+
+        System.out.println("Contact Not Found.");
+    }
+
+    // Delete contact using first name
+    public void deleteContact(String firstName) {
+
+        for (Contact contact : contacts) {
+
+            if (contact.getFirstName().equalsIgnoreCase(firstName)) {
+
+                contacts.remove(contact);
+
+                System.out.println("Contact Deleted Successfully.");
 
                 return;
             }

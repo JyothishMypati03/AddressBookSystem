@@ -51,16 +51,28 @@ public class AddressBookSystem {
         addressBook.addContact(contact);
 
         // Display contact details
-        System.out.println("\nContact Details");
+        System.out.println("Contact Details");
         addressBook.displayContact(firstName);
 
         // Edit Contact
-        System.out.print("\nEnter First Name to Edit : ");
+        System.out.print("Enter First Name to Edit : ");
         String name = scanner.nextLine();
 
         addressBook.editContact(name);
 
-        System.out.println("\nUpdated Contact Details");
+        System.out.println("Updated Contact Details");
+        addressBook.displayContacts();
+
+        // Delete Contact
+        System.out.print("Enter First Name to Delete : ");
+        String userName = scanner.nextLine();
+
+        addressBook.deleteContact(userName);
+
+        System.out.println("Remaining Contacts");
+
         addressBook.displayContacts();
     }
+
+
 }

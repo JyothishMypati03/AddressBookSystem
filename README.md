@@ -1,20 +1,21 @@
 # Address Book System
 
-A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts.
+A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. The project is implemented incrementally, with each Use Case (UC) adding new functionality to the Address Book.
 
 ---
 
-# UC3 - Edit Existing Contact
+# UC4 - Delete Contact
 
 ## Objective
 
-Implement the ability to edit an existing contact in the Address Book using the contact's **first name**.
+Implement the ability to delete an existing contact from the Address Book using the contact's **first name**.
 
 The application allows the user to:
 
-* Search for an existing contact using the first name.
-* Update the contact details using console input.
-* Display the updated contact information.
+* Add a new contact.
+* Display all contacts.
+* Edit an existing contact.
+* Delete an existing contact using the first name.
 
 ---
 
@@ -46,9 +47,9 @@ Responsibilities:
 * Starts the application.
 * Reads contact details from the console.
 * Creates a `Contact` object.
-* Adds the contact to the `AddressBook`.
-* Accepts the contact name to edit.
-* Displays the updated contact information.
+* Adds the contact to the Address Book.
+* Accepts the contact name to delete.
+* Displays the remaining contacts.
 
 ---
 
@@ -78,28 +79,35 @@ Fields:
 
 Responsibilities:
 
-* Stores contacts.
-* Adds new contacts.
-* Displays contact details.
-* Searches for a contact using the first name.
-* Updates an existing contact.
+* Store multiple contacts using `ArrayList`.
+* Add a new contact.
+* Display all contacts.
+* Search a contact using the first name.
+* Edit an existing contact.
+* Delete an existing contact.
 
 ---
 
 # Features Implemented
 
 * Add a new contact.
-* Display contact details.
-* Search a contact using the first name.
-* Edit:
+* Display all contacts.
+* Edit an existing contact.
+* Delete a contact using the first name.
+* Display the updated contact list after deletion.
 
-    * Address
-    * City
-    * State
-    * ZIP Code
-    * Phone Number
-    * Email Address
-* Display the updated contact information.
+---
+
+# OOP Concepts Used
+
+* Class
+* Object
+* Encapsulation
+* Constructors
+* ArrayList
+* Getter and Setter Methods
+* Method Overriding (`toString()`)
+* Object Composition
 
 ---
 
@@ -117,40 +125,24 @@ Enter Email : jyothish@gmail.com
 
 Contact Added Successfully
 
-Enter First Name to Edit : Jyothish
-
-Enter New Address : Bangalore
-Enter New City : Bangalore
-Enter New State : Karnataka
-Enter New Zip Code : 560001
-Enter New Phone Number : 9999999999
-Enter New Email : jyothish@gmail.com
-
-Contact Updated Successfully
-
-Updated Contact Details
+All Contacts
 
 Contact{
 firstName='Jyothish',
 lastName='Mypati',
-address='Bangalore',
-city='Bangalore',
-state='Karnataka',
-zip='560001',
-phoneNumber='9999999999',
+address='Hyderabad',
+city='Hyderabad',
+state='Telangana',
+zip='500081',
+phoneNumber='9876543210',
 email='jyothish@gmail.com'
 }
+
+Enter First Name to Delete : Jyothish
+
+Contact Deleted Successfully.
+
+Remaining Contacts
+
+No Contacts Found.
 ```
-
----
-
-# OOP Concepts Used
-
-* Class
-* Object
-* Encapsulation
-* Constructors
-* ArrayList
-* Getter and Setter Methods
-* Method Overriding (`toString()`)
-* Object Composition
