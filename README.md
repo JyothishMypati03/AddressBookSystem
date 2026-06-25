@@ -1,19 +1,23 @@
 # Address Book System
 
-A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. This project is implemented incrementally, with each Use Case (UC) adding new functionality to the Address Book.
+A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. The project is implemented incrementally, with each Use Case (UC) adding new functionality to the Address Book.
 
 ---
 
-# UC5 - Add Multiple Contacts to Address Book
+# UC4 - Delete Contact
 
 ## Objective
 
-Implement the ability to add multiple contacts to the Address Book using console input.
+Implement the ability to delete an existing contact from the Address Book using the contact's **first name**.
 
-Each contact is added one at a time and stored in a collection for future operations.
+The application allows the user to:
+
+* Add a new contact.
+* Display all contacts.
+* Edit an existing contact.
+* Delete an existing contact using the first name.
 
 ---
-
 
 # Project Structure
 
@@ -42,10 +46,10 @@ Responsibilities:
 
 * Starts the application.
 * Reads contact details from the console.
-* Allows the user to add multiple contacts.
-* Creates `Contact` objects.
-* Adds contacts to the `AddressBook`.
-* Displays all stored contacts.
+* Creates a `Contact` object.
+* Adds the contact to the Address Book.
+* Accepts the contact name to delete.
+* Displays the remaining contacts.
 
 ---
 
@@ -56,9 +60,9 @@ Responsibilities:
 * Stores contact information.
 * Provides constructors.
 * Provides getter and setter methods.
-* Overrides the `toString()` method.
+* Overrides the `toString()` method to display contact details.
 
-Contact Fields:
+Fields:
 
 * First Name
 * Last Name
@@ -75,52 +79,41 @@ Contact Fields:
 
 Responsibilities:
 
-* Stores multiple contacts using `ArrayList<Contact>`.
-* Adds a new contact.
-* Displays all contacts.
-* Edits an existing contact.
-* Deletes an existing contact.
+* Store multiple contacts using `ArrayList`.
+* Add a new contact.
+* Display all contacts.
+* Search a contact using the first name.
+* Edit an existing contact.
+* Delete an existing contact.
 
 ---
 
 # Features Implemented
 
 * Add a new contact.
-* Add multiple contacts using console input.
-* Store contacts using `ArrayList`.
 * Display all contacts.
 * Edit an existing contact.
-* Delete an existing contact.
+* Delete a contact using the first name.
+* Display the updated contact list after deletion.
 
 ---
 
-# Collection Used
+# OOP Concepts Used
 
-```java
-ArrayList<Contact>
-```
-
-The `ArrayList` collection is used to store multiple contacts in the Address Book. Each new contact entered by the user is added to the list.
-
----
-
-# Program Flow
-
-1. Start the application.
-2. Enter contact details.
-3. Create a `Contact` object.
-4. Add the contact to the `AddressBook`.
-5. Ask the user whether to add another contact.
-6. Repeat until the user selects **No**.
-7. Display all contacts stored in the Address Book.
+* Class
+* Object
+* Encapsulation
+* Constructors
+* ArrayList
+* Getter and Setter Methods
+* Method Overriding (`toString()`)
+* Object Composition
 
 ---
 
 # Sample Output
 
 ```text
-Enter Contact Details
-
 Enter First Name : Jyothish
 Enter Last Name : Mypati
 Enter Address : Hyderabad
@@ -130,24 +123,7 @@ Enter Zip Code : 500081
 Enter Phone Number : 9876543210
 Enter Email : jyothish@gmail.com
 
-Contact Added Successfully.
-
-Do you want to add another contact? (Y/N): y
-
-Enter Contact Details
-
-Enter First Name : Rahul
-Enter Last Name : Sharma
-Enter Address : Bangalore
-Enter City : Bangalore
-Enter State : Karnataka
-Enter Zip Code : 560001
-Enter Phone Number : 9876543211
-Enter Email : rahul@gmail.com
-
-Contact Added Successfully.
-
-Do you want to add another contact? (Y/N): n
+Contact Added Successfully
 
 All Contacts
 
@@ -162,26 +138,11 @@ phoneNumber='9876543210',
 email='jyothish@gmail.com'
 }
 
-Contact{
-firstName='Rahul',
-lastName='Sharma',
-address='Bangalore',
-city='Bangalore',
-state='Karnataka',
-zip='560001',
-phoneNumber='9876543211',
-email='rahul@gmail.com'
-}
+Enter First Name to Delete : Jyothish
+
+Contact Deleted Successfully.
+
+Remaining Contacts
+
+No Contacts Found.
 ```
-
----
-
-# OOP Concepts Used
-
-* Class
-* Object
-* Encapsulation
-* Constructors
-* Method Overriding (`toString()`)
-* Object Composition
-* Collection Framework (`ArrayList`)
