@@ -13,6 +13,7 @@ public class AddressBook {
     // Display all contacts
     public void displayContacts() {
         for (Contact contact : contacts) {
+
             System.out.println(contact);
         }
     }

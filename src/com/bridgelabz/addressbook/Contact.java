@@ -98,6 +98,7 @@ public class Contact {
     // Returns all contact details as a string
     @Override
     public String toString() {
+
         return "Contact{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

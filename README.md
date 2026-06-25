@@ -1,23 +1,28 @@
 # Address Book System
 
-A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. The project is implemented incrementally, with each Use Case (UC) adding new functionality to the Address Book.
+A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. This project is implemented incrementally, with each Use Case (UC) introducing new functionality to the Address Book application.
 
 ---
 
-# UC4 - Delete Contact
+# UC6 - Maintain Multiple Address Books
 
 ## Objective
 
-Implement the ability to delete an existing contact from the Address Book using the contact's **first name**.
+Implement the ability to maintain multiple Address Books in the application.
+
+Each Address Book has a unique name (for example, **Family**, **Friends**, or **Office**) and stores its own collection of contacts.
 
 The application allows the user to:
 
-* Add a new contact.
-* Display all contacts.
-* Edit an existing contact.
-* Delete an existing contact using the first name.
+* Create multiple Address Books.
+* Store contacts in different Address Books.
+* Display contacts from a selected Address Book.
+* Edit contacts within a selected Address Book.
+* Delete contacts from a selected Address Book.
+* View all available Address Books.
 
 ---
+
 
 # Project Structure
 
@@ -45,11 +50,23 @@ AddressBookSystem
 Responsibilities:
 
 * Starts the application.
-* Reads contact details from the console.
-* Creates a `Contact` object.
-* Adds the contact to the Address Book.
-* Accepts the contact name to delete.
-* Displays the remaining contacts.
+* Creates multiple Address Books.
+* Maintains all Address Books using a `HashMap`.
+* Allows users to select an Address Book.
+* Performs contact operations on the selected Address Book.
+
+---
+
+## AddressBook
+
+Responsibilities:
+
+* Stores multiple contacts.
+* Adds new contacts.
+* Displays all contacts.
+* Displays a particular contact.
+* Edits an existing contact.
+* Deletes an existing contact.
 
 ---
 
@@ -57,12 +74,12 @@ Responsibilities:
 
 Responsibilities:
 
-* Stores contact information.
+* Stores contact details.
 * Provides constructors.
 * Provides getter and setter methods.
-* Overrides the `toString()` method to display contact details.
+* Overrides the `toString()` method.
 
-Fields:
+Contact Fields:
 
 * First Name
 * Last Name
@@ -75,45 +92,89 @@ Fields:
 
 ---
 
-## AddressBook
+# Collection Framework Used
 
-Responsibilities:
+## HashMap
 
-* Store multiple contacts using `ArrayList`.
-* Add a new contact.
-* Display all contacts.
-* Search a contact using the first name.
-* Edit an existing contact.
-* Delete an existing contact.
+```java
+HashMap<String, AddressBook>
+```
+
+The `HashMap` stores multiple Address Books.
+
+Example:
+
+* Family
+* Friends
+* Office
+
+Each key is the Address Book name, and each value is an `AddressBook` object.
+
+---
+
+## ArrayList
+
+```java
+ArrayList<Contact>
+```
+
+Each `AddressBook` maintains its own list of contacts using an `ArrayList`.
 
 ---
 
 # Features Implemented
 
-* Add a new contact.
-* Display all contacts.
+* Create multiple Address Books.
+* Store contacts in different Address Books.
+* Add contacts to a selected Address Book.
+* Display contacts from a selected Address Book.
 * Edit an existing contact.
-* Delete a contact using the first name.
-* Display the updated contact list after deletion.
+* Delete an existing contact.
+* Display all available Address Books.
 
 ---
 
-# OOP Concepts Used
+# Program Flow
 
-* Class
-* Object
-* Encapsulation
-* Constructors
-* ArrayList
-* Getter and Setter Methods
-* Method Overriding (`toString()`)
-* Object Composition
+1. Start the application.
+2. Create one or more Address Books.
+3. Select an Address Book.
+4. Add contacts to the selected Address Book.
+5. Display, edit, or delete contacts.
+6. View all available Address Books.
+7. Exit the application.
 
 ---
 
 # Sample Output
 
 ```text
+========== ADDRESS BOOK SYSTEM ==========
+
+1. Create Address Book
+2. Add Contact
+3. Display Contacts
+4. Edit Contact
+5. Delete Contact
+6. Display Address Books
+7. Exit
+
+Enter Your Choice : 1
+
+Enter Address Book Name : Family
+
+Address Book Created Successfully.
+
+Enter Your Choice : 1
+
+Enter Address Book Name : Friends
+
+Address Book Created Successfully.
+
+Enter Your Choice : 2
+
+Enter Address Book Name : Family
+
 Enter First Name : Jyothish
 Enter Last Name : Mypati
 Enter Address : Hyderabad
@@ -123,26 +184,37 @@ Enter Zip Code : 500081
 Enter Phone Number : 9876543210
 Enter Email : jyothish@gmail.com
 
-Contact Added Successfully
+Contact Added Successfully.
 
-All Contacts
+Enter Your Choice : 2
 
-Contact{
-firstName='Jyothish',
-lastName='Mypati',
-address='Hyderabad',
-city='Hyderabad',
-state='Telangana',
-zip='500081',
-phoneNumber='9876543210',
-email='jyothish@gmail.com'
-}
+Enter Address Book Name : Friends
 
-Enter First Name to Delete : Jyothish
+Enter First Name : Rahul
+Enter Last Name : Sharma
+...
 
-Contact Deleted Successfully.
+Contact Added Successfully.
 
-Remaining Contacts
+Enter Your Choice : 6
 
-No Contacts Found.
+Available Address Books
+
+- Family
+- Friends
 ```
+
+---
+
+# OOP Concepts Used
+
+* Class
+* Object
+* Encapsulation
+* Constructors
+* Method Overriding (`toString()`)
+* Object Composition
+* Collection Framework
+* HashMap
+* ArrayList
+
