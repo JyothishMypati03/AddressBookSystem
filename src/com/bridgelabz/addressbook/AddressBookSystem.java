@@ -52,6 +52,15 @@ public class AddressBookSystem {
 
         // Display contact details
         System.out.println("\nContact Details");
-        addressBook.displayContact();
+        addressBook.displayContact(firstName);
+
+        // Edit Contact
+        System.out.print("\nEnter First Name to Edit : ");
+        String name = scanner.nextLine();
+
+        addressBook.editContact(name);
+
+        System.out.println("\nUpdated Contact Details");
+        addressBook.displayContacts();
     }
 }

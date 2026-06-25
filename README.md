@@ -1,25 +1,20 @@
 # Address Book System
 
-A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. This project is implemented incrementally, with each Use Case (UC) developed in a separate Git feature branch and merged into the `dev` and `main` branches.
+A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts.
 
 ---
 
-# UC2 - Add a New Contact to Address Book
+# UC3 - Edit Existing Contact
 
 ## Objective
 
-Implement the ability to add a new contact to the Address Book by accepting user input from the console.
+Implement the ability to edit an existing contact in the Address Book using the contact's **first name**.
 
-The application stores the following information for each contact:
+The application allows the user to:
 
-* First Name
-* Last Name
-* Address
-* City
-* State
-* ZIP Code
-* Phone Number
-* Email Address
+* Search for an existing contact using the first name.
+* Update the contact details using console input.
+* Display the updated contact information.
 
 ---
 
@@ -49,11 +44,11 @@ AddressBookSystem
 Responsibilities:
 
 * Starts the application.
-* Reads contact details from the console using `Scanner`.
+* Reads contact details from the console.
 * Creates a `Contact` object.
-* Creates an `AddressBook` object.
-* Adds the contact to the address book.
-* Displays the stored contact.
+* Adds the contact to the `AddressBook`.
+* Accepts the contact name to edit.
+* Displays the updated contact information.
 
 ---
 
@@ -83,20 +78,28 @@ Fields:
 
 Responsibilities:
 
-* Manages the relationship between the Address Book and Contact.
-* Stores the contact object.
-* Adds a contact to the address book.
-* Displays the contact information.
+* Stores contacts.
+* Adds new contacts.
+* Displays contact details.
+* Searches for a contact using the first name.
+* Updates an existing contact.
 
 ---
 
 # Features Implemented
 
-* Read contact details from the console.
-* Create a `Contact` object using the parameterized constructor.
-* Store the contact in the `AddressBook`.
-* Display the contact details using the overridden `toString()` method.
-* Follow Object-Oriented Programming concepts.
+* Add a new contact.
+* Display contact details.
+* Search a contact using the first name.
+* Edit:
+
+    * Address
+    * City
+    * State
+    * ZIP Code
+    * Phone Number
+    * Email Address
+* Display the updated contact information.
 
 ---
 
@@ -112,16 +115,29 @@ Enter Zip Code : 500081
 Enter Phone Number : 9876543210
 Enter Email : jyothish@gmail.com
 
-Contact Details
+Contact Added Successfully
+
+Enter First Name to Edit : Jyothish
+
+Enter New Address : Bangalore
+Enter New City : Bangalore
+Enter New State : Karnataka
+Enter New Zip Code : 560001
+Enter New Phone Number : 9999999999
+Enter New Email : jyothish@gmail.com
+
+Contact Updated Successfully
+
+Updated Contact Details
 
 Contact{
 firstName='Jyothish',
 lastName='Mypati',
-address='Hyderabad',
-city='Hyderabad',
-state='Telangana',
-zip='500081',
-phoneNumber='9876543210',
+address='Bangalore',
+city='Bangalore',
+state='Karnataka',
+zip='560001',
+phoneNumber='9999999999',
 email='jyothish@gmail.com'
 }
 ```
@@ -133,11 +149,8 @@ email='jyothish@gmail.com'
 * Class
 * Object
 * Encapsulation
-* Constructor
-* Method
-* Object Relationship
+* Constructors
+* ArrayList
+* Getter and Setter Methods
 * Method Overriding (`toString()`)
-
----
-
-
+* Object Composition
