@@ -1,43 +1,156 @@
 # Address Book System
 
-A Java console-based Address Book application developed as part of the BridgeLabz Java learning program.
+A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts.
 
-## Project Description
+---
 
-This project demonstrates the implementation of an Address Book System using Java and Object-Oriented Programming principles. The application will be developed incrementally by implementing each Use Case (UC) in a separate Git branch and merging it into the `main` branch.
+# UC3 - Edit Existing Contact
 
-## Technologies Used
+## Objective
 
-- Java
-- IntelliJ IDEA
-- Git
-- GitHub
+Implement the ability to edit an existing contact in the Address Book using the contact's **first name**.
 
-## Project Structure
+The application allows the user to:
 
+* Search for an existing contact using the first name.
+* Update the contact details using console input.
+* Display the updated contact information.
+
+---
+
+# Project Structure
+
+```text
+AddressBookSystem
+│
+├── src
+│   └── com
+│       └── bridgelabz
+│           └── addressbook
+│               ├── AddressBookSystem.java
+│               ├── AddressBook.java
+│               └── Contact.java
+│
+├── README.md
+└── .gitignore
 ```
-src/
-└── AddressBookSystem.java
+
+---
+
+# Classes
+
+## AddressBookSystem
+
+Responsibilities:
+
+* Starts the application.
+* Reads contact details from the console.
+* Creates a `Contact` object.
+* Adds the contact to the `AddressBook`.
+* Accepts the contact name to edit.
+* Displays the updated contact information.
+
+---
+
+## Contact
+
+Responsibilities:
+
+* Stores contact information.
+* Provides constructors.
+* Provides getter and setter methods.
+* Overrides the `toString()` method to display contact details.
+
+Fields:
+
+* First Name
+* Last Name
+* Address
+* City
+* State
+* ZIP Code
+* Phone Number
+* Email Address
+
+---
+
+## AddressBook
+
+Responsibilities:
+
+* Stores contacts.
+* Adds new contacts.
+* Displays contact details.
+* Searches for a contact using the first name.
+* Updates an existing contact.
+
+---
+
+# Features Implemented
+
+* Add a new contact.
+* Display contact details.
+* Search a contact using the first name.
+* Edit:
+
+    * Address
+    * City
+    * State
+    * ZIP Code
+    * Phone Number
+    * Email Address
+* Display the updated contact information.
+
+---
+
+# Sample Output
+
+```text
+Enter First Name : Jyothish
+Enter Last Name : Mypati
+Enter Address : Hyderabad
+Enter City : Hyderabad
+Enter State : Telangana
+Enter Zip Code : 500081
+Enter Phone Number : 9876543210
+Enter Email : jyothish@gmail.com
+
+Contact Added Successfully
+
+Enter First Name to Edit : Jyothish
+
+Enter New Address : Bangalore
+Enter New City : Bangalore
+Enter New State : Karnataka
+Enter New Zip Code : 560001
+Enter New Phone Number : 9999999999
+Enter New Email : jyothish@gmail.com
+
+Contact Updated Successfully
+
+Updated Contact Details
+
+Contact{
+firstName='Jyothish',
+lastName='Mypati',
+address='Bangalore',
+city='Bangalore',
+state='Karnataka',
+zip='560001',
+phoneNumber='9999999999',
+email='jyothish@gmail.com'
+}
 ```
 
-## Current Status
+---
 
-### UC0 - Project Setup
+# OOP Concepts Used
 
-- Created Java project
-- Created `AddressBookSystem` class
-- Displayed welcome message
-
-### Current Output
-
-```
-Welcome to Address Book Program in AddressBookMain class on START Main Branch
-```
-
-## Upcoming Features
-
-- UC1 - Create Contact
-- UC2 - Add Contact
-- UC3 - Edit Contact
-- UC4 - Delete Contact
-
+* Class
+* Object
+* Encapsulation
+* Constructors
+* ArrayList
+* Getter and Setter Methods
+* Method Overriding (`toString()`)
+* Object Composition
