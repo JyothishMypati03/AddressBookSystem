@@ -1,43 +1,79 @@
 # Address Book System
 
-A Java console-based Address Book application developed as part of the BridgeLabz Java learning program.
+A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts.
 
-## Project Description
+## UC1 - Create Contact
 
-This project demonstrates the implementation of an Address Book System using Java and Object-Oriented Programming principles. The application will be developed incrementally by implementing each Use Case (UC) in a separate Git branch and merging it into the `main` branch.
+### Objective
 
-## Technologies Used
+Create a Contact in the Address Book with the following details:
 
-- Java
-- IntelliJ IDEA
-- Git
-- GitHub
+- First Name
+- Last Name
+- Address
+- City
+- State
+- ZIP Code
+- Phone Number
+- Email Address
+
 
 ## Project Structure
 
 ```
-src/
-└── AddressBookSystem.java
+AddressBookSystem
+│
+├── src
+│   └── com
+│       └── bridgelabz
+│           └── addressbook
+│               ├── AddressBookSystem.java
+│               └── Contact.java
+│
+├── README.md
+└── .gitignore
 ```
 
-## Current Status
+## Features Implemented
 
-### UC0 - Project Setup
+- Created the `Contact` class.
+- Added the following contact fields:
+    - First Name
+    - Last Name
+    - Address
+    - City
+    - State
+    - ZIP Code
+    - Phone Number
+    - Email Address
+- Implemented:
+    - Default Constructor
+    - Parameterized Constructor
+    - Getter Methods
+    - Setter Methods
+    - `toString()` Method
+- Created the `AddressBookSystem` class.
+- Created a sample `Contact` object.
+- Displayed the contact details using the `toString()` method.
 
-- Created Java project
-- Created `AddressBookSystem` class
-- Displayed welcome message
-
-### Current Output
+## Sample Output
 
 ```
-Welcome to Address Book Program in AddressBookMain class on START Main Branch
+Contact{
+firstName='Jyothish',
+lastName='Mypati',
+address='Hyderabad',
+city='Hyderabad',
+state='Telangana',
+zip='500081',
+phoneNumber='9876543210',
+email='jyothish@gmail.com'
+}
 ```
 
-## Upcoming Features
+## Future Enhancements
 
-- UC1 - Create Contact
-- UC2 - Add Contact
-- UC3 - Edit Contact
+- UC2 - Add Contact using Console Input
+- UC3 - Edit Existing Contact
 - UC4 - Delete Contact
 
