@@ -22,6 +22,7 @@ public class AddressBookSystem {
             System.out.println("4. Edit Contact");
             System.out.println("5. Delete Contact");
             System.out.println("6. Display Address Books");
+            System.out.println("7. Search Person by City or State");
             System.out.print("Enter Your Choice : ");
 
             int choice = scanner.nextInt();
@@ -153,11 +154,81 @@ public class AddressBookSystem {
 
                     break;
 
+                case 7 :
+
+                    searchPersonsAcrossBooks(addressBooks, scanner);
+                    break;
+
 
                 default:
 
                     System.out.println("Invalid Choice.");
             }
+
+
+        private static void searchPersonsAcrossBooks(HashMap<String, AddressBook> addressBooks , Scanner scanner){
+
+                System.out.println("\nSearch By:");
+                System.out.println("1. City");
+                System.out.println("2. State");
+                System.out.print("Enter Your Choice : ");
+
+
+                int searchChoice = scanner.nextInt();
+                scanner.nextLine();
+
+                System.out.print("Enter Search Value : ");
+                String searchValue = scanner.nextLine();
+
+                boolean found = false;
+
+                System.out.println("\nSearch Results:");
+
+                for(Map.Entry<String , AddressBook> entry : addressBooks.entrySet()){
+
+                    String bookName = entry.getKey();
+                    AddressBook addressBook = entry.getValue();
+
+                    List<Contact> result;
+
+                    if(searchChoice == 1){
+
+                        result = addressBook.searchByCity(searchValue);
+
+                    }else if ( searchChoice == 2){
+
+                        result = addressBook.searchByState(searchValue);
+
+                    }else{
+
+                        System.out.println("Invalid Search Choice");
+
+                        return;
+
+                    }
+
+
+                    if(!result.isEmpty()){
+
+                        found =true;
+                        System.out.println("\n Address Book : "+ bookName);
+                        for( Contact contact :result){
+
+                            System.out.println(contact)
+
+                        }
+
+                    }
+
+                }
+                if(!found){
+
+                    System.out.println("No matching persons found.")
+
+                }
+
+            }
+
         }
     }
 }

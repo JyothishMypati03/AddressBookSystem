@@ -96,4 +96,17 @@ public class AddressBook {
         System.out.println("Contact Not Found.");
     }
 
+    public List<Contact> searchByCity(String city){
+
+        return  contacts.stream().filter(contact -> contact.getCity() != null && contact.getCity().equalsIgnoreCase(city).collect(Collector.toList()));
+    }
+
+    public List<Contact> searchByState(String  state){
+
+        return contacts.stream.filter(contact -> contact.getState() != null && contact.getState().equalsIgnoreCase(city).collect(Collector.toList()));
+
+    }
+
+
+
 }
