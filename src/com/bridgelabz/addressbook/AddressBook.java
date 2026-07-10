@@ -7,7 +7,17 @@ public class AddressBook {
 
     // Adds a contact to the address book
     public void addContact(Contact contact) {
+
+        boolean duplicate = contacts.stream().anyMatch(existing -> existing.equals(contact));
+
+        if(boolean){
+            System.out.println("Duplicate Contact Found. Contact Not Added.");
+            return fasle;
+        }
+
         contacts.add(contact);
+        System.out.println("Contact Added Successfully.");
+        return true;
     }
 
     // Display all contacts

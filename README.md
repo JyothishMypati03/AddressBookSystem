@@ -1,25 +1,51 @@
-# Address Book System
+# 📌 Address Book System - UC7
 
-A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. The project is implemented incrementally, with each Use Case (UC) adding new functionality to the Address Book.
+## 🎯 Goal
 
----
+Ensure that there is **no duplicate entry of the same person** in a particular Address Book.
 
-# UC4 - Delete Contact
-
-## Objective
-
-Implement the ability to delete an existing contact from the Address Book using the contact's **first name**.
-
-The application allows the user to:
-
-* Add a new contact.
-* Display all contacts.
-* Edit an existing contact.
-* Delete an existing contact using the first name.
+The duplicate check is done using the person's name while adding a contact. The use case also mentions using collection methods, overriding `equals()`, and Java Streams for duplicate detection. :contentReference[oaicite:0]{index=0}
 
 ---
 
-# Project Structure
+## 👤 Actor
+
+**User**
+
+---
+
+## 🔄 Flow
+
+1. User selects an Address Book.
+2. User tries to add a new contact.
+3. System checks whether the person already exists in that Address Book.
+4. If the person already exists, the duplicate contact is not added.
+5. If the person does not exist, the contact is added successfully.
+
+---
+
+## 💡 Java Concepts Covered
+
+- Collection Methods
+- `equals()` Method Overriding
+- Java Streams
+- Duplicate Detection
+- Object Comparison
+- Encapsulation
+
+---
+
+## 📋 Functional Requirements
+
+- Check for duplicate contacts while adding a person.
+- Use the person's name as the duplicate check key.
+- Search existing contacts in the Address Book.
+- Prevent adding the same person more than once.
+- Display a meaningful message when a duplicate is found.
+
+---
+
+## 📂 Project Structure
 
 ```text
 AddressBookSystem
@@ -34,115 +60,3 @@ AddressBookSystem
 │
 ├── README.md
 └── .gitignore
-```
-
----
-
-# Classes
-
-## AddressBookSystem
-
-Responsibilities:
-
-* Starts the application.
-* Reads contact details from the console.
-* Creates a `Contact` object.
-* Adds the contact to the Address Book.
-* Accepts the contact name to delete.
-* Displays the remaining contacts.
-
----
-
-## Contact
-
-Responsibilities:
-
-* Stores contact information.
-* Provides constructors.
-* Provides getter and setter methods.
-* Overrides the `toString()` method to display contact details.
-
-Fields:
-
-* First Name
-* Last Name
-* Address
-* City
-* State
-* ZIP Code
-* Phone Number
-* Email Address
-
----
-
-## AddressBook
-
-Responsibilities:
-
-* Store multiple contacts using `ArrayList`.
-* Add a new contact.
-* Display all contacts.
-* Search a contact using the first name.
-* Edit an existing contact.
-* Delete an existing contact.
-
----
-
-# Features Implemented
-
-* Add a new contact.
-* Display all contacts.
-* Edit an existing contact.
-* Delete a contact using the first name.
-* Display the updated contact list after deletion.
-
----
-
-# OOP Concepts Used
-
-* Class
-* Object
-* Encapsulation
-* Constructors
-* ArrayList
-* Getter and Setter Methods
-* Method Overriding (`toString()`)
-* Object Composition
-
----
-
-# Sample Output
-
-```text
-Enter First Name : Jyothish
-Enter Last Name : Mypati
-Enter Address : Hyderabad
-Enter City : Hyderabad
-Enter State : Telangana
-Enter Zip Code : 500081
-Enter Phone Number : 9876543210
-Enter Email : jyothish@gmail.com
-
-Contact Added Successfully
-
-All Contacts
-
-Contact{
-firstName='Jyothish',
-lastName='Mypati',
-address='Hyderabad',
-city='Hyderabad',
-state='Telangana',
-zip='500081',
-phoneNumber='9876543210',
-email='jyothish@gmail.com'
-}
-
-Enter First Name to Delete : Jyothish
-
-Contact Deleted Successfully.
-
-Remaining Contacts
-
-No Contacts Found.
-```
