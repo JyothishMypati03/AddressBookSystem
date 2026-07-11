@@ -21,6 +21,7 @@ public class AddressBookSystem {
             System.out.println("6. Display Address Books");
             System.out.println("7. Search Person by City or State");
             System.out.println("8. View Persons by City or State");
+            System.out.println("9. Count Persons by City or State");
             System.out.print("Enter Your Choice : ");
 
             int choice = scanner.nextInt();
@@ -164,6 +165,9 @@ public class AddressBookSystem {
                     viewPersonsByCityOrState(addressBooks, scanner);
                     break;
 
+                case 9:
+                    countPersonsByCityOrState(addressBooks, scanner);
+                    break;
 
                 default:
 
@@ -237,6 +241,54 @@ public class AddressBookSystem {
                 }
 
             }
+
+    private static void countPersonsByCityOrState(HashMap<String, AddressBook> addressBooks, Scanner scanner) {
+
+        HashMap<String, List<Contact>> cityDictionary = new HashMap<>();
+        HashMap<String, List<Contact>> stateDictionary = new HashMap<>();
+
+        for (AddressBook addressBook : addressBooks.values()) {
+            for (Contact contact : addressBook.getContacts()) {
+
+                cityDictionary
+                        .computeIfAbsent(contact.getCity(), k -> new ArrayList<>())
+                        .add(contact);
+
+                stateDictionary
+                        .computeIfAbsent(contact.getState(), k -> new ArrayList<>())
+                        .add(contact);
+            }
+        }
+
+        System.out.println("\nCount By:");
+        System.out.println("1. City");
+        System.out.println("2. State");
+        System.out.print("Enter Your Choice : ");
+
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        if (choice == 1) {
+            System.out.println("\nPersons Count By City:");
+
+            cityDictionary.entrySet().stream()
+                    .forEach(entry ->
+                            System.out.println(entry.getKey() + " -> " + entry.getValue().stream().count() + " person(s)")
+                    );
+
+        } else if (choice == 2) {
+            System.out.println("\nPersons Count By State:");
+
+            stateDictionary.entrySet().stream()
+                    .forEach(entry ->
+                            System.out.println(entry.getKey() + " -> " + entry.getValue().stream().count() + " person(s)")
+                    );
+
+        } else {
+            System.out.println("Invalid Choice.");
+        }
+    }
+
 
     // View all persons grouped by City or State using Dictionary (HashMap)
         private static void viewPersonsByCityOrState(HashMap<String, AddressBook> addressBooks, Scanner scanner){

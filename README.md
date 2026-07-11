@@ -4,13 +4,13 @@ A Java console-based Address Book application developed using Object-Oriented Pr
 
 ---
 
-# UC9 - View Persons by City or State
+# UC10 - Count Contact Persons by City or State
 
 ## Objective
 
-Implement the ability to maintain a **Dictionary of City and Person** as well as a **Dictionary of State and Person**.
+Implement the ability to count the number of contact persons grouped by **City** or **State**.
 
-The application groups contacts based on their **City** and **State** using `HashMap<String, List<Contact>>` and displays all persons belonging to a particular City or State.
+The application maintains City and State dictionaries and displays the total number of contacts available in each City or State using **Java Streams**.
 
 ---
 
@@ -42,8 +42,9 @@ Responsibilities:
 - Starts the application.
 - Maintains multiple Address Books.
 - Creates City and State dictionaries.
-- Displays persons grouped by City.
-- Displays persons grouped by State.
+- Counts contact persons by City.
+- Counts contact persons by State.
+- Displays the total number of contacts for each City or State.
 
 ---
 
@@ -51,7 +52,7 @@ Responsibilities:
 
 Responsibilities:
 
-- Stores contacts.
+- Stores multiple contacts.
 - Adds new contacts.
 - Displays contacts.
 - Edits contacts.
@@ -102,17 +103,18 @@ Stores multiple Address Books.
 HashMap<String, List<Contact>>
 ```
 
-Stores contacts grouped by City.
+Maintains contacts grouped by City.
 
 Example:
 
 ```text
 Hyderabad
-   Jyothish
-   Rahul
+    Jyothish
+    Rahul
 
 Bangalore
-   Kiran
+    Kiran
+    Ravi
 ```
 
 ---
@@ -123,17 +125,18 @@ Bangalore
 HashMap<String, List<Contact>>
 ```
 
-Stores contacts grouped by State.
+Maintains contacts grouped by State.
 
 Example:
 
 ```text
 Telangana
-   Jyothish
-   Rahul
+    Jyothish
+    Rahul
 
 Karnataka
-   Kiran
+    Kiran
+    Ravi
 ```
 
 ---
@@ -150,10 +153,12 @@ Stores contacts inside each Address Book.
 
 # Java Streams Used
 
-The Stream API is used to display persons from each City or State.
+The Stream API is used to count the number of contacts in each City or State.
+
+Example:
 
 ```java
-contacts.stream().forEach(System.out::println);
+entry.getValue().stream().count();
 ```
 
 ---
@@ -167,10 +172,9 @@ contacts.stream().forEach(System.out::println);
 - Edit contacts.
 - Delete contacts.
 - Search persons by City or State.
-- Maintain a City Dictionary.
-- Maintain a State Dictionary.
-- View all persons grouped by City.
-- View all persons grouped by State.
+- View persons grouped by City or State.
+- Count contact persons by City.
+- Count contact persons by State.
 
 ---
 
@@ -180,9 +184,9 @@ contacts.stream().forEach(System.out::println);
 2. Create one or more Address Books.
 3. Add contacts.
 4. Store contacts in City and State dictionaries.
-5. Select **View Persons by City or State**.
+5. Select **Count Persons by City or State**.
 6. Choose City or State.
-7. Display all grouped contacts.
+7. Display the number of contacts available for each City or State.
 
 ---
 
@@ -199,27 +203,40 @@ contacts.stream().forEach(System.out::println);
 6. Display Address Books
 7. Search Person by City or State
 8. View Persons by City or State
-9. Exit
+9. Count Persons by City or State
+10. Exit
 
-Enter Your Choice : 8
+Enter Your Choice : 9
 
-View By
+Count By
 
 1. City
 2. State
 
 Enter Your Choice : 1
 
-Persons By City
+Persons Count By City
 
-City : Hyderabad
+Hyderabad -> 2 person(s)
+Bangalore -> 3 person(s)
+Chennai -> 1 person(s)
+```
 
-Contact{firstName='Jyothish', lastName='Mypati', ...}
-Contact{firstName='Rahul', lastName='Sharma', ...}
+For State:
 
-City : Bangalore
+```text
+Count By
 
-Contact{firstName='Kiran', lastName='Kumar', ...}
+1. City
+2. State
+
+Enter Your Choice : 2
+
+Persons Count By State
+
+Telangana -> 2 person(s)
+Karnataka -> 3 person(s)
+Tamil Nadu -> 1 person(s)
 ```
 
 ---
@@ -243,6 +260,7 @@ Contact{firstName='Kiran', lastName='Kumar', ...}
 - List
 - Stream API
 - `computeIfAbsent()`
+- `count()`
 - `forEach()`
 - Method Reference (`System.out::println`)
 
@@ -250,10 +268,10 @@ Contact{firstName='Kiran', lastName='Kumar', ...}
 
 # Learning Outcome
 
-After completing UC9, the application can:
+After completing UC10, the application can:
 
-- Organize contacts using dictionaries.
-- Group contacts based on City.
-- Group contacts based on State.
-- Display grouped contacts efficiently.
-- Use Java Collections and Stream API to manage and display grouped data.
+- Maintain City and State dictionaries.
+- Count contact persons grouped by City.
+- Count contact persons grouped by State.
+- Use Java Collections to organize grouped data.
+- Use Java Streams to efficiently count grouped contacts.
