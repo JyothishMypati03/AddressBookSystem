@@ -1,23 +1,28 @@
 package com.bridgelabz.addressbook;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBook {
 
     private ArrayList<Contact> contacts = new ArrayList<>();
 
     // Adds a contact to the address book
-    public void addContact(Contact contact) {
+    public boolean addContact(Contact contact) {
 
-        boolean duplicate = contacts.stream().anyMatch(existing -> existing.equals(contact));
+        boolean duplicate = contacts.stream()
+                .anyMatch(existing -> existing.equals(contact));
 
-        if(boolean){
-            System.out.println("Duplicate Contact Found. Contact Not Added.");
-            return fasle;
+        if (duplicate) {
+            return false;
         }
 
         contacts.add(contact);
-        System.out.println("Contact Added Successfully.");
         return true;
+    }
+
+    // return contacts
+    public List<Contact> getContacts() {
+        return contacts;
     }
 
     // Display all contacts
@@ -81,14 +86,14 @@ public class AddressBook {
     // Delete contact using first name
     public void deleteContact(String firstName) {
 
-        for (Contact contact : contacts) {
+        Iterator<Contact> iterator = contacts.iterator();
+
+        while (iterator.hasNext()) {
+            Contact contact = iterator.next();
 
             if (contact.getFirstName().equalsIgnoreCase(firstName)) {
-
-                contacts.remove(contact);
-
+                iterator.remove();
                 System.out.println("Contact Deleted Successfully.");
-
                 return;
             }
         }
@@ -98,12 +103,12 @@ public class AddressBook {
 
     public List<Contact> searchByCity(String city){
 
-        return  contacts.stream().filter(contact -> contact.getCity() != null && contact.getCity().equalsIgnoreCase(city).collect(Collector.toList()));
+        return  contacts.stream().filter(contact -> contact.getCity() != null && contact.getCity().equalsIgnoreCase(city)).collect(Collectors.toList());
     }
 
     public List<Contact> searchByState(String  state){
 
-        return contacts.stream.filter(contact -> contact.getState() != null && contact.getState().equalsIgnoreCase(city).collect(Collector.toList()));
+        return contacts.stream().filter(contact -> contact.getState() != null && contact.getState().equalsIgnoreCase(state)).collect(Collectors.toList());
 
     }
 

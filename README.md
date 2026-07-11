@@ -1,16 +1,16 @@
-# 📌 Address Book System
+# Address Book System
 
 A Java console-based Address Book application developed using Object-Oriented Programming (OOP) concepts. This project is implemented incrementally, with each Use Case (UC) introducing new functionality to the Address Book application.
 
 ---
 
-# UC8 - Search Person by City or State Across Multiple Address Books
+# UC9 - View Persons by City or State
 
 ## Objective
 
-Implement the ability to search persons living in a particular **City** or **State** across multiple Address Books.
+Implement the ability to maintain a **Dictionary of City and Person** as well as a **Dictionary of State and Person**.
 
-The search should display all matching persons from every Address Book using **Java Streams**.
+The application groups contacts based on their **City** and **State** using `HashMap<String, List<Contact>>` and displays all persons belonging to a particular City or State.
 
 ---
 
@@ -40,9 +40,10 @@ AddressBookSystem
 Responsibilities:
 
 - Starts the application.
-- Maintains multiple Address Books using a `HashMap`.
-- Allows users to search persons by **City** or **State**.
-- Displays matching contacts from all Address Books.
+- Maintains multiple Address Books.
+- Creates City and State dictionaries.
+- Displays persons grouped by City.
+- Displays persons grouped by State.
 
 ---
 
@@ -51,9 +52,12 @@ Responsibilities:
 Responsibilities:
 
 - Stores contacts.
-- Adds, edits, displays, and deletes contacts.
-- Searches contacts by **City** using Java Streams.
-- Searches contacts by **State** using Java Streams.
+- Adds new contacts.
+- Displays contacts.
+- Edits contacts.
+- Deletes contacts.
+- Searches contacts by City or State.
+- Returns all contacts for dictionary creation.
 
 ---
 
@@ -90,11 +94,47 @@ HashMap<String, AddressBook>
 
 Stores multiple Address Books.
 
+---
+
+## City Dictionary
+
+```java
+HashMap<String, List<Contact>>
+```
+
+Stores contacts grouped by City.
+
 Example:
 
-- Family
-- Friends
-- Office
+```text
+Hyderabad
+   Jyothish
+   Rahul
+
+Bangalore
+   Kiran
+```
+
+---
+
+## State Dictionary
+
+```java
+HashMap<String, List<Contact>>
+```
+
+Stores contacts grouped by State.
+
+Example:
+
+```text
+Telangana
+   Jyothish
+   Rahul
+
+Karnataka
+   Kiran
+```
 
 ---
 
@@ -104,30 +144,33 @@ Example:
 ArrayList<Contact>
 ```
 
-Stores contacts within each Address Book.
+Stores contacts inside each Address Book.
 
 ---
 
-## Java Streams
+# Java Streams Used
+
+The Stream API is used to display persons from each City or State.
 
 ```java
-contacts.stream()
+contacts.stream().forEach(System.out::println);
 ```
-
-Used to filter contacts by **City** or **State**.
 
 ---
 
 # Features Implemented
 
 - Create multiple Address Books.
-- Add contacts to different Address Books.
+- Add contacts.
+- Prevent duplicate contacts.
 - Display contacts.
 - Edit contacts.
 - Delete contacts.
-- Prevent duplicate contacts.
-- Search persons by **City** across all Address Books.
-- Search persons by **State** across all Address Books.
+- Search persons by City or State.
+- Maintain a City Dictionary.
+- Maintain a State Dictionary.
+- View all persons grouped by City.
+- View all persons grouped by State.
 
 ---
 
@@ -135,11 +178,11 @@ Used to filter contacts by **City** or **State**.
 
 1. Start the application.
 2. Create one or more Address Books.
-3. Add contacts to Address Books.
-4. Select **Search by City or State**.
-5. Enter the City or State name.
-6. System searches all Address Books.
-7. Display all matching contacts.
+3. Add contacts.
+4. Store contacts in City and State dictionaries.
+5. Select **View Persons by City or State**.
+6. Choose City or State.
+7. Display all grouped contacts.
 
 ---
 
@@ -155,28 +198,28 @@ Used to filter contacts by **City** or **State**.
 5. Delete Contact
 6. Display Address Books
 7. Search Person by City or State
-8. Exit
+8. View Persons by City or State
+9. Exit
 
-Enter Your Choice : 7
+Enter Your Choice : 8
 
-Search By
+View By
 
 1. City
 2. State
 
 Enter Your Choice : 1
 
-Enter City : Hyderabad
+Persons By City
 
-Search Results
+City : Hyderabad
 
-Address Book : Family
+Contact{firstName='Jyothish', lastName='Mypati', ...}
+Contact{firstName='Rahul', lastName='Sharma', ...}
 
-Contact{firstName='Jyothish', lastName='Mypati', city='Hyderabad', state='Telangana', ...}
+City : Bangalore
 
-Address Book : Friends
-
-Contact{firstName='Rahul', lastName='Sharma', city='Hyderabad', state='Telangana', ...}
+Contact{firstName='Kiran', lastName='Kumar', ...}
 ```
 
 ---
@@ -190,9 +233,6 @@ Contact{firstName='Rahul', lastName='Sharma', city='Hyderabad', state='Telangana
 - Method Overriding (`toString()`, `equals()`, `hashCode()`)
 - Object Composition
 - Collection Framework
-- HashMap
-- ArrayList
-- Java Streams
 
 ---
 
@@ -200,23 +240,20 @@ Contact{firstName='Rahul', lastName='Sharma', city='Hyderabad', state='Telangana
 
 - HashMap
 - ArrayList
+- List
 - Stream API
-- `filter()`
-- `collect()`
-- `Collectors.toList()`
+- `computeIfAbsent()`
+- `forEach()`
+- Method Reference (`System.out::println`)
 
 ---
 
-# Git Branch
+# Learning Outcome
 
-```text
-feature/UC8-SearchPersonByCityOrState
-```
+After completing UC9, the application can:
 
----
-
-# Commit Message
-
-```text
-feat(UC8): search persons by city or state across multiple address books
-```
+- Organize contacts using dictionaries.
+- Group contacts based on City.
+- Group contacts based on State.
+- Display grouped contacts efficiently.
+- Use Java Collections and Stream API to manage and display grouped data.

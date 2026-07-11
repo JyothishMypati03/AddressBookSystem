@@ -121,12 +121,13 @@ public class Contact {
 
         Contact contact = (Contact) obj;
 
-        return phoneNumber.equals(contact.phoneNumber);
+        return firstName.equalsIgnoreCase(contact.firstName)
+                && lastName.equalsIgnoreCase(contact.lastName);
     }
 
 
     @Override
     public int hashCode() {
-        return (phoneNumber.hashCode());
+        return (firstName.toLowerCase() + lastName.toLowerCase()).hashCode();
     }
 }

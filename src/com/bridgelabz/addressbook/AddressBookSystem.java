@@ -1,8 +1,5 @@
 package com.bridgelabz.addressbook;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class AddressBookSystem {
 
@@ -23,6 +20,7 @@ public class AddressBookSystem {
             System.out.println("5. Delete Contact");
             System.out.println("6. Display Address Books");
             System.out.println("7. Search Person by City or State");
+            System.out.println("8. View Persons by City or State");
             System.out.print("Enter Your Choice : ");
 
             int choice = scanner.nextInt();
@@ -35,7 +33,7 @@ public class AddressBookSystem {
                     System.out.print("Enter Address Book Name : ");
                     String bookName = scanner.nextLine();
 
-                    if(addressBooks.containsKey(bookName)) {
+                    if (addressBooks.containsKey(bookName)) {
                         System.out.println("Address Book Already Exists.");
                     } else {
                         addressBooks.put(bookName, new AddressBook());
@@ -88,9 +86,11 @@ public class AddressBookSystem {
                             email
                     );
 
-                    addressBooks.get(bookName).addContact(contact);
-
-                    System.out.println("Contact Added Successfully.");
+                    if (addressBooks.get(bookName).addContact(contact)) {
+                        System.out.println("Contact Added Successfully.");
+                    } else {
+                        System.out.println("Duplicate Contact Found. Contact Not Added.");
+                    }
                     break;
 
                 case 3:
@@ -154,9 +154,14 @@ public class AddressBookSystem {
 
                     break;
 
-                case 7 :
+                case 7:
 
                     searchPersonsAcrossBooks(addressBooks, scanner);
+                    break;
+
+                case 8 :
+
+                    viewPersonsByCityOrState(addressBooks, scanner);
                     break;
 
 
@@ -164,6 +169,10 @@ public class AddressBookSystem {
 
                     System.out.println("Invalid Choice.");
             }
+
+        }
+
+    }
 
 
         private static void searchPersonsAcrossBooks(HashMap<String, AddressBook> addressBooks , Scanner scanner){
@@ -210,11 +219,11 @@ public class AddressBookSystem {
 
                     if(!result.isEmpty()){
 
-                        found =true;
+                        found = true;
                         System.out.println("\n Address Book : "+ bookName);
                         for( Contact contact :result){
 
-                            System.out.println(contact)
+                            System.out.println(contact);
 
                         }
 
@@ -223,12 +232,39 @@ public class AddressBookSystem {
                 }
                 if(!found){
 
-                    System.out.println("No matching persons found.")
+                    System.out.println("No matching persons found.");
 
                 }
 
             }
 
+    // View all persons grouped by City or State using Dictionary (HashMap)
+        private static void viewPersonsByCityOrState(HashMap<String, AddressBook> addressBooks, Scanner scanner){
+            // Dictionary to store City -> List of Contacts
+            HashMap<String , List<Contact>>  cityDictionary = new HashMap<>();
+
+            // Dictionary to store State -> List of Contacts
+            HashMap<String , List<Contact>>  stateDictionary = new HashMap<>();
+
+            // Traverse all Address Books and organize contacts by City and State
+            for(AddressBook addressBook : addressBooks.values()){
+                for(Contact contact : addressBook.getContacts()){
+
+                    // Add contact to the corresponding City
+                        cityDictionary.computeIfAbsent(contact.getCity(),k -> new ArrayList<>())
+                                .add(contact);
+
+                    // Add contact to the corresponding State
+                        stateDictionary
+                            .computeIfAbsent(contact.getState(), k -> new ArrayList<>())
+                                .add(contact);
+
+                }
+
+            }
+
+
         }
-    }
+
+
 }
