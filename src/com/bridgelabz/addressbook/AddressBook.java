@@ -6,6 +6,9 @@ public class AddressBook {
 
     private ArrayList<Contact> contacts = new ArrayList<>();
 
+
+
+
     // Adds a contact to the address book
     public boolean addContact(Contact contact) {
 

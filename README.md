@@ -4,13 +4,13 @@ A Java console-based Address Book application developed using Object-Oriented Pr
 
 ---
 
-# UC10 - Count Contact Persons by City or State
+# UC11 - Sort Contacts Alphabetically by Person's Name
 
 ## Objective
 
-Implement the ability to count the number of contact persons grouped by **City** or **State**.
+Implement the ability to sort contacts alphabetically by **Person's Name** within an Address Book.
 
-The application maintains City and State dictionaries and displays the total number of contacts available in each City or State using **Java Streams**.
+The application uses the **Java Collection Framework** and **Java Streams** to sort contact entries before displaying them on the console.
 
 ---
 
@@ -41,10 +41,8 @@ Responsibilities:
 
 - Starts the application.
 - Maintains multiple Address Books.
-- Creates City and State dictionaries.
-- Counts contact persons by City.
-- Counts contact persons by State.
-- Displays the total number of contacts for each City or State.
+- Accepts user choices.
+- Displays contacts sorted alphabetically by person's name.
 
 ---
 
@@ -53,12 +51,12 @@ Responsibilities:
 Responsibilities:
 
 - Stores multiple contacts.
-- Adds new contacts.
+- Adds contacts.
 - Displays contacts.
 - Edits contacts.
 - Deletes contacts.
-- Searches contacts by City or State.
-- Returns all contacts for dictionary creation.
+- Searches contacts.
+- Sorts contacts alphabetically by person's name.
 
 ---
 
@@ -87,78 +85,36 @@ Contact Fields:
 
 # Collection Framework Used
 
-## HashMap
-
-```java
-HashMap<String, AddressBook>
-```
-
-Stores multiple Address Books.
-
----
-
-## City Dictionary
-
-```java
-HashMap<String, List<Contact>>
-```
-
-Maintains contacts grouped by City.
-
-Example:
-
-```text
-Hyderabad
-    Jyothish
-    Rahul
-
-Bangalore
-    Kiran
-    Ravi
-```
-
----
-
-## State Dictionary
-
-```java
-HashMap<String, List<Contact>>
-```
-
-Maintains contacts grouped by State.
-
-Example:
-
-```text
-Telangana
-    Jyothish
-    Rahul
-
-Karnataka
-    Kiran
-    Ravi
-```
-
----
-
 ## ArrayList
 
 ```java
 ArrayList<Contact>
 ```
 
-Stores contacts inside each Address Book.
+Stores all contacts inside an Address Book.
+
+---
+
+## Comparator
+
+```java
+Comparator.comparing(Contact::getFirstName)
+```
+
+Used to sort contacts alphabetically by person's name.
 
 ---
 
 # Java Streams Used
 
-The Stream API is used to count the number of contacts in each City or State.
+The Stream API is used to sort contacts before displaying them.
 
 Example:
 
 ```java
-entry.getValue().stream().count();
+contacts.stream()
+        .sorted(Comparator.comparing(Contact::getFirstName))
+        .forEach(System.out::println);
 ```
 
 ---
@@ -172,9 +128,9 @@ entry.getValue().stream().count();
 - Edit contacts.
 - Delete contacts.
 - Search persons by City or State.
-- View persons grouped by City or State.
-- Count contact persons by City.
-- Count contact persons by State.
+- View persons by City or State.
+- Count persons by City or State.
+- Sort contacts alphabetically by person's name.
 
 ---
 
@@ -183,10 +139,9 @@ entry.getValue().stream().count();
 1. Start the application.
 2. Create one or more Address Books.
 3. Add contacts.
-4. Store contacts in City and State dictionaries.
-5. Select **Count Persons by City or State**.
-6. Choose City or State.
-7. Display the number of contacts available for each City or State.
+4. Select an Address Book.
+5. Choose **Sort Contacts by Name**.
+6. Display contacts in alphabetical order.
 
 ---
 
@@ -204,39 +159,20 @@ entry.getValue().stream().count();
 7. Search Person by City or State
 8. View Persons by City or State
 9. Count Persons by City or State
-10. Exit
+10. Sort Contacts by Name
+11. Exit
 
-Enter Your Choice : 9
+Enter Your Choice : 10
 
-Count By
+Sorted Contacts
 
-1. City
-2. State
+Contact{firstName='Abhishek', lastName='Sharma', ...}
 
-Enter Your Choice : 1
+Contact{firstName='Jyothish', lastName='Mypati', ...}
 
-Persons Count By City
+Contact{firstName='Rahul', lastName='Verma', ...}
 
-Hyderabad -> 2 person(s)
-Bangalore -> 3 person(s)
-Chennai -> 1 person(s)
-```
-
-For State:
-
-```text
-Count By
-
-1. City
-2. State
-
-Enter Your Choice : 2
-
-Persons Count By State
-
-Telangana -> 2 person(s)
-Karnataka -> 3 person(s)
-Tamil Nadu -> 1 person(s)
+Contact{firstName='Ravi', lastName='Kumar', ...}
 ```
 
 ---
@@ -255,12 +191,10 @@ Tamil Nadu -> 1 person(s)
 
 # Java Features Used
 
-- HashMap
 - ArrayList
-- List
-- Stream API
-- `computeIfAbsent()`
-- `count()`
+- Comparator
+- Java Stream API
+- `sorted()`
 - `forEach()`
 - Method Reference (`System.out::println`)
 
@@ -268,10 +202,10 @@ Tamil Nadu -> 1 person(s)
 
 # Learning Outcome
 
-After completing UC10, the application can:
+After completing UC11, the application can:
 
-- Maintain City and State dictionaries.
-- Count contact persons grouped by City.
-- Count contact persons grouped by State.
-- Use Java Collections to organize grouped data.
-- Use Java Streams to efficiently count grouped contacts.
+- Store multiple contacts.
+- Sort contacts alphabetically by person's name.
+- Display sorted contacts using Java Streams.
+- Use `Comparator` for custom sorting.
+- Improve the readability of contact information through ordered display.
